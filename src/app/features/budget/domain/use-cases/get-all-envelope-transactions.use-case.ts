@@ -4,10 +4,10 @@ import { EnvelopeTransaction } from '../models/envelope-transaction.model';
 import { EnvelopeGateway } from '../gateways/envelope.gateway';
 
 @Injectable({ providedIn: 'root' })
-export class AddEnvelopeTransactionUseCase {
+export class GetAllEnvelopeTransactionsUseCase {
   private readonly gateway = inject(EnvelopeGateway);
 
-  execute(envelopeId: string, data: { amount: number; date: string; note: string | null }): Observable<EnvelopeTransaction> {
-    return this.gateway.addTransaction(envelopeId, data);
+  execute(): Observable<EnvelopeTransaction[]> {
+    return this.gateway.getAllTransactions();
   }
 }
